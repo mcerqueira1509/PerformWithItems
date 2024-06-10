@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformWithItems.Pages.Page3"
+             xmlns:models="clr-namespace:PerformWithItems.Models"
+             Title="Page3">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label 
+                Text="Navigate away and back here after load the items"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        
+            <Label
+                x:Name="RandomTextLabel"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        
+            <Button
+                    x:Name="Button1"
+                    Text="Load the items" 
+                    Clicked="Button1_Clicked"
+                    HorizontalOptions="Fill" 
+                    Margin="15"/>
+        
+            <Button
+                    x:Name="Button2"
+                    Text="Go to Page2" 
+                    Clicked="Button2_Clicked"
+                    HorizontalOptions="Fill" 
+                    Margin="15"/>
+        
+            <ListView x:Name="ListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:TheItem">
+                        <ViewCell>
+                            <Grid VerticalOptions="CenterAndExpand" ColumnDefinitions="*,*,120">
+                                <Label Grid.Column="0" Text="{Binding Path=Date, StringFormat='{0:dd/MM/yyyy}'}"
+                                        Margin="10,0,0,0"/>
+                                <Label Grid.Column="1" Text="{Binding Text}" MaxLines="1" LineBreakMode="WordWrap" />
+                                <Label Grid.Column="2" Text="{Binding Value}" 
+                                        HorizontalOptions="End" Margin="0,0,10,0"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
